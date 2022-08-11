@@ -3,6 +3,7 @@
 /* Variables */
 
 $color-light: #fff;
+$color-light-glass: rgba(255, 255, 255, 0.8);
 $color-dark: #444;
 
 $font-logo: 'Sacramento', cursive;
@@ -16,17 +17,33 @@ $font-text: 'Source Sans Pro', sans-serif;
 }
 
 body {
-  background: $color-light;
+  background-image: url('https://images.pexels.com/photos/1398688/pexels-photo-1398688.jpeg?cs=srgb&dl=pexels-jorge-zapata-1398688.jpg&fm=jpg');
+  background-size: cover;
+  background-position: center;
   font-family: $font-text;
   color: $color-dark;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+                }
+                @keyframes fadeInAnimation {
+                  0% {
+                      opacity: 0;
+                  }
+                  100% {
+                      opacity: 1;
+                  }
 }
 
 .container {
   max-width: 1140px;
   margin: 0 auto;
+  h1 {
+    margin-top: 30px;
+  }
 }
 
 .section-title {
@@ -54,10 +71,11 @@ body {
 
 .posts {
   flex: 2 0 0;
+  position: relative;
 }
 
 .sidebar, .posts {
-  background: $color-light;
+  background: $color-light-glass;
   margin-right: 10px;
   padding: 40px;
   border: 1px solid $color-dark;
@@ -68,6 +86,7 @@ body {
 
 .logo {
   font-family: $font-logo;
+  color: $color-light ;
   font-weight: 400;
   font-size: 104px;
   line-height: 1;
@@ -78,12 +97,20 @@ body {
 
 .list {
   list-style-type: none;
+  text-decoration: none;
   margin: 0;
   padding: 0;
   .active {
     font-weight: bold;
   }
+  a {
+    text-decoration: none;
+    transition: all, .5s;
+   }
 }
+
+
+ 
 
 .list-horizontal {
   li {
@@ -102,9 +129,13 @@ body {
 /* Post */
 
 .post {
-  display: none;
+  opacity: 0;
+  position:absolute;
+  display:inline-block;
+  transition: all .6s;
   &.active {
-    display: block;
+    opacity: 1;
+    z-index: 1;
   }
 }
 
