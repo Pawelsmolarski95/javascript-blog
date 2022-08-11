@@ -132,6 +132,7 @@ body {
   opacity: 0;
   position:absolute;
   display:inline-block;
+  padding-right: 15px;
   transition: all .6s;
   &.active {
     opacity: 1;
@@ -149,3 +150,33 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+// @media (max-width: 767px) {
+//   // .container {
+//   //   display: flex;
+//   //   flex-direction: column;
+//   //   justify-content: center;
+//   //   align-items:center ;
+//   // }
+//   .wrapper {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items:center ;
+//   }
+//   .posts {
+//     display: flex;
+//     flex-direction: column;
+//     position: relative;
+//     width: 80%;
+//     height: 100vh;
+//   }
+//   .post {
+//     position: absolute;
+//   }
+//   // .article {
+//   //   position: relative;
+//   //   display: flex
+//   //   ;
+//   // }
+// }
