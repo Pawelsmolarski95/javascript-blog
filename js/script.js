@@ -7,7 +7,9 @@ const articleSelector = '.post',
       titleListSelector = '.titles',
       listTags = '.post-tags .list',
       listAuthor = ' .post-author',
-      tagsListSelector = '.tags.list';
+      tagsListSelector = '.tags.list',
+      cloudClassCount = '5',
+      cloudClassPrefix = 'tag-size-';
 
 
 
@@ -81,9 +83,26 @@ function generateTitleLinks(customSelector = '') {
 generateTitleLinks()
 
 //------Generate tags
+function calculateTagsParams(tags) {
+  const params = {max: 0, min: 999999};
+  for(let tag in tags){
+    if(tags[tag] > params.max){
+      params.max = tags[tag];
+    }
+    if(tags[tag] < params.min){
+      params.min = tags[tag]
+    }
+  }
+  return (params);
+}
+function calculateTagClass(count, params){
+
+}
+
+
 function generateTags() {
-  /* [NEW] create a new variable allTags with an empty array */
-  let allTags = [];
+  /* [NEW] create a new variable allTags with an empty object */
+  let allTags = {};
   /* DONE find all articles */
   const articles = document.querySelectorAll(articleSelector);
   // console.log(articles);
@@ -111,10 +130,13 @@ function generateTags() {
       /* DONE add generated code to html variable */
         // tagsList.insertAdjacentHTML('afterbegin', linkHTML);
       /* [NEW] check if this link is NOT already in allTags */
-      if(allTags.indexOf(linkHTML) == -1){
+      if(!allTags[tag]) {
         /* [NEW] add generated code to allTags array */
-        allTags.push(linkHTML);
+        allTags[tag] = 1;
+      } else {
+        allTags[tag]++;
       }
+
     /* END LOOP: for each tag */
     }
   /* DONE insert HTML of all the links into the tags wrapper */
@@ -122,11 +144,25 @@ function generateTags() {
 
   /* END LOOP: for every article: */
   }
-/* [NEW] find list of tags in right column */
+  /* [NEW] find list of tags in right column */
   const tagList = document.querySelector(tagsListSelector);
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams)
+  /* [NEW] create variable for all links HTML code */
+  let allTagsHTML = '';
 
-  /* [NEW] add html from allTags to tagList */
-  tagList.innerHTML = allTags.join(' ');
+  /* [NEW] START LOOP: for each tag in allTags: */
+  for(let tag in allTags){
+    /* [NEW] generate code of a link and add it to allTagsHTML */
+    const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParam) + '</li>';
+    console.log('tagLinkHTML:', tagLinkHTML);
+    allTagsHTML += tagLinkHTML;
+  }
+  /* [NEW] END LOOP: for each tag in allTags: */
+
+  /*[NEW] add HTML from allTagsHTML to tagList */
+  tagList.innerHTML = allTagsHTML;
+
 }
 
 
