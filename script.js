@@ -69,11 +69,11 @@
     }
 
     /* get 'href' attribute from the clicked link */
-    const articleSelector = clickedElement.getAttribute('href');
-    // console.log(articleSelector);
+    const opts.opts.opts.articleSelector = clickedElement.getAttribute('href');
+    // console.log(opts.opts.opts.articleSelector);
 
     /* find the correct article using the selector (value of 'href' attribute) */
-    const targetArticle = document.querySelector(articleSelector);
+    const targetArticle = document.querySelector(opts.opts.opts.articleSelector);
     // console.log(targetArticle);
 
     /* add class 'active' to the correct article */
