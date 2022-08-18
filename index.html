@@ -234,14 +234,21 @@
         </div>
       </div>
 
+      <!-- // const linkHTML = ' <li><a href="#tag-' + tag + '">' + tag + '</a></li>'; -->
+      <!-- '<a href="#author-' + authorTags + '">' + authorTags + '</a></li>'; -->
+
+    <script id="template-article-link" type="text/x-handlebars-template">
+      <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+    </script>
+    <script id="template-article-tag" type="text/x-handlebars-template">
+      <li><a href="#tag-{{ id }}">{{ tag }}</a></li>'
+    </script>
+    <script id="template-author-tag" type="text/x-handlebars-template">
+      <a href="#author-{{ id }}">{{ author }}</a>
+    </script>
 
 
-
-
-
-
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
